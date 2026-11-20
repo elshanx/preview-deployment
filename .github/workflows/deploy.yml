@@ -19,7 +19,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: arn:aws:iam::236740392668:role/preview-deployment-gha
-          aws-region: eu-central-1
+          aws-region: eu-north-1
 
       - name: Deploy to AWS S3
         run: aws s3 cp index.html s3://test-preview-deployment-elshanx/index.html

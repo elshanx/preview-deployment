@@ -6,6 +6,17 @@ A static HTML page deployed to Amazon S3 from GitHub Actions. The workflow signs
 
 https://test-preview-deployment-elshanx.s3.eu-north-1.amazonaws.com/index.html
 
+## Run locally with Docker
+
+The `Dockerfile` packages the page into an nginx image. Build and run it:
+
+```bash
+docker build -t preview-deployment .
+docker run --rm -p 8080:80 preview-deployment
+```
+
+Then open http://localhost:8080.
+
 ## How it deploys
 
 Every push to `main` runs `.github/workflows/deploy.yml`, which:
@@ -19,4 +30,5 @@ The role's trust policy only accepts tokens from this repo on the `main` branch.
 ## Files
 
 - `index.html`: the whole site.
+- `Dockerfile`: builds an nginx image that serves `index.html`.
 - `.github/workflows/deploy.yml`: the deploy pipeline.
